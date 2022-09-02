@@ -12,21 +12,35 @@ import { View } from "react-native";
 import { Entypo, AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { FavoritesContext } from "../../store/context/favorites-context";
+import { useDispatch, useSelector } from "react-redux";
+import { addFavorite, removeFavorite } from "../../store/redux/favorites";
 
 export type IMealDetailsProps = {};
 
 const MealDetails: React.FC<IMealDetailsProps> = ({ route }) => {
-  const favContext = useContext(FavoritesContext);
+  // const favContext = useContext(FavoritesContext);
+  const favoriteMealIds = useSelector((state) => state.favoriteMeals.ids);
+  const dispatch = useDispatch();
   const { item } = route.params;
 
   const navigation = useNavigation();
-  const mealIsFavorited = favContext.ids.includes(item.id);
+  // const mealIsFavorited = favContext.ids.includes(item.id);
+  const mealIsFavorited = favoriteMealIds.includes(item.id);
   const [pressed, setPressed] = useState(false);
+  // const handleHeart = () => {
+  //   if (mealIsFavorited) {
+  //     favContext.removeFavorite(item.id);
+  //   } else {
+  //     favContext.addFavorite(item.id);
+  //   }
+  // };
   const handleHeart = () => {
     if (mealIsFavorited) {
-      favContext.removeFavorite(item.id);
+      // favContext.removeFavorite(item.id);
+      dispatch(removeFavorite({ id: item.id }));
     } else {
-      favContext.addFavorite(item.id);
+      // favContext.addFavorite(item.id);
+      dispatch(addFavorite({ id: item.id }));
     }
   };
 

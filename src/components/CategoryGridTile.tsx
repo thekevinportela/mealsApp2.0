@@ -1,17 +1,17 @@
 import { useNavigation } from "@react-navigation/native";
-import { Box, Center, Pressable, Text } from "native-base";
+import { Box, Center, Image, Pressable, Text } from "native-base";
 import React from "react";
 import { View } from "react-native";
 
 export type ICategoryGridTileProps = {
   title: string;
-  color?: string;
+  image?: string;
   id: string;
 };
 
 const CategoryGridTile: React.FC<ICategoryGridTileProps> = ({
   title,
-  color,
+  image,
   id,
 }) => {
   const navigation = useNavigation();
@@ -22,11 +22,24 @@ const CategoryGridTile: React.FC<ICategoryGridTileProps> = ({
       height={48}
       width={40}
       shadow={"4"}
-      bg={color}
       borderRadius={10}
+      overflow={"hidden"}
+      alignItems={"center"}
+      justifyContent={"center"}
     >
-      <Center flex={1}>
-        <Text>{title}</Text>
+      <Image
+        source={{
+          uri: image,
+        }}
+        alt="IMAGE"
+        position={"absolute"}
+        h={"full"}
+        w={"full"}
+      />
+      <Center bg={"#10101090"} borderRadius={"xl"}>
+        <Text py={2} px={4} color={"white"} fontSize={18}>
+          {title}
+        </Text>
       </Center>
     </Pressable>
   );

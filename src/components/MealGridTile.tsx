@@ -59,7 +59,12 @@ const MealGridTile: React.FC<IMealGridTileProps> = ({ item }) => {
               alignItems: "center",
             }}
           >
-            <Text fontSize={20} color={"white"} padding={1}>
+            <Text
+              textAlign={"center"}
+              fontSize={20}
+              color={"white"}
+              padding={1}
+            >
               {item.title}
             </Text>
             <Text color={"#bbb"} paddingBottom={1} padding={1}>

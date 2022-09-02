@@ -7,11 +7,12 @@ import { MealDetails } from "../screens/MealDetails";
 import { AntDesign } from "@expo/vector-icons";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import Favorites from "../screens/Favorites";
+import { Button, Icon } from "native-base";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
-const Main = () => {
+const Main = ({ navigation }) => {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -29,10 +30,17 @@ const Main = () => {
       <Stack.Screen
         name="CategoryDetails"
         component={CategoryDetails}
-        options={({ route }) => {
-          const { title } = route.params;
-          return { title };
-        }}
+        options={
+          (({ route }) => {
+            const { title } = route.params;
+            return { title };
+          },
+          {
+            headerRight: () => (
+              <Icon as={AntDesign} name="plus" color="#fff" size={6} />
+            ),
+          })
+        }
       />
       <Stack.Screen
         name="MealDetails"
