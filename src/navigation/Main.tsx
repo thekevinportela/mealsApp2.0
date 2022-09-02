@@ -8,11 +8,15 @@ import { AntDesign } from "@expo/vector-icons";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import Favorites from "../screens/Favorites";
 import { Button, Icon } from "native-base";
+import { useNavigation } from "@react-navigation/native";
+import CreateMeal from "../screens/CreateMeal";
+import ConfirmMeal from "../ConfirmMeal";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
-const Main = ({ navigation }) => {
+const Main = () => {
+  const navigation = useNavigation();
   return (
     <Stack.Navigator
       screenOptions={{
@@ -37,7 +41,13 @@ const Main = ({ navigation }) => {
           },
           {
             headerRight: () => (
-              <Icon as={AntDesign} name="plus" color="#fff" size={6} />
+              <Icon
+                as={AntDesign}
+                name="plus"
+                color="#fff"
+                size={6}
+                onPress={() => navigation.navigate("CreateMeal")}
+              />
             ),
           })
         }
@@ -50,6 +60,8 @@ const Main = ({ navigation }) => {
           return { title: item.title };
         }}
       />
+      <Stack.Screen name="CreateMeal" component={CreateMeal} />
+      <Stack.Screen name="ConfirmMeal" component={ConfirmMeal} />
     </Stack.Navigator>
   );
 };

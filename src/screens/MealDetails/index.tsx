@@ -1,14 +1,5 @@
-import {
-  Box,
-  Center,
-  HStack,
-  Icon,
-  Image,
-  ScrollView,
-  Text,
-} from "native-base";
-import React, { useContext, useLayoutEffect, useState } from "react";
-import { View } from "react-native";
+import { Box, HStack, Image, ScrollView, Text } from "native-base";
+import React, { useContext, useLayoutEffect } from "react";
 import { Entypo, AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { FavoritesContext } from "../../store/context/favorites-context";
@@ -26,7 +17,6 @@ const MealDetails: React.FC<IMealDetailsProps> = ({ route }) => {
   const navigation = useNavigation();
   // const mealIsFavorited = favContext.ids.includes(item.id);
   const mealIsFavorited = favoriteMealIds.includes(item.id);
-  const [pressed, setPressed] = useState(false);
   // const handleHeart = () => {
   //   if (mealIsFavorited) {
   //     favContext.removeFavorite(item.id);
