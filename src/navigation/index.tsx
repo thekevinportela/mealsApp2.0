@@ -11,9 +11,9 @@ const Navigation = () => {
   const dispatch = useDispatch();
   console.log("USER", user);
 
-  function onAuthStateChanged(user) {
+  function onAuthStateChanged(user: FirebaseAuthTypes.User | null) {
     console.log("ON AUTH STATE CHANGED", user);
-    dispatch(setUser(user));
+    dispatch(setUser(user?.uid));
     // if (initializing) setInitializing(false);
   }
 
