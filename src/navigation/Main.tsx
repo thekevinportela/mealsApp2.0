@@ -11,6 +11,7 @@ import { Button, Icon } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 import CreateMeal from "../screens/CreateMeal";
 import ConfirmMeal from "../ConfirmMeal";
+import { Settings } from "../screens/Settings";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -81,6 +82,7 @@ const HomeDrawer = () => {
     >
       <Drawer.Screen name="Home" component={Home} />
       <Drawer.Screen name="Favorites" component={Favorites} />
+      <Drawer.Screen name="Settings" component={Settings} />
     </Drawer.Navigator>
   );
 };

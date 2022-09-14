@@ -1,5 +1,10 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
+export const fetchMeals = createAsyncThunk(
+  "fetchMeals",
+  async (thunkApi) => {}
+);
 
 const mealsSlice = createSlice({
   name: "favorites",
