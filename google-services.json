@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "204699008282",
+    "project_id": "meals-app-99523",
+    "storage_bucket": "meals-app-99523.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:204699008282:android:7d057388558590e66800a3",
+        "android_client_info": {
+          "package_name": "com.thekevinportela.mealsApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "204699008282-sgqu31ls7cu1qkaidtpa9eji0d459900.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTcDd0R8OmYuUxZ0la2nbjlykkg-X7-HQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "204699008282-sgqu31ls7cu1qkaidtpa9eji0d459900.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "204699008282-8jof27ik25f4ijp0p5fd7u5q7btuo28p.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.thekevinportela.mealsApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
