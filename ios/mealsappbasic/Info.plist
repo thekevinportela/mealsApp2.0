@@ -34,6 +34,12 @@
           <string>com.googleusercontent.apps.204699008282-8jof27ik25f4ijp0p5fd7u5q7btuo28p</string>
         </array>
       </dict>
+      <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>exp+meals-app-basic</string>
+        </array>
+      </dict>
     </array>
     <key>CFBundleVersion</key>
     <string>1</string>

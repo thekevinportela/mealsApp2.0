@@ -2,7 +2,7 @@ import { View } from "react-native";
 import React, { useContext } from "react";
 import MealsList from "../../components/MealsList";
 import { FavoritesContext } from "../../store/context/favorites-context";
-import { MEALS } from "../../data/dummy-data";
+// import { MEALS } from "../../data/dummy-data";
 import { Center, Text } from "native-base";
 import { useSelector } from "react-redux";
 

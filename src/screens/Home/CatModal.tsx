@@ -8,11 +8,40 @@ import {
   Modal,
 } from "native-base";
 import * as ImagePicker from "expo-image-picker";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
+import { useDispatch } from "react-redux";
+import { addCategory, editCategory } from "../../store/redux/meals";
 
-const CatModal = ({ modalVisible, closeModal }) => {
+const CatModal = ({ modalVisible, closeModal, selectedCat }) => {
+  const dispatch = useDispatch();
   const [image, setImage] = useState(null);
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    if (!modalVisible) {
+      setName("");
+      setImage(null);
+    } else {
+      if (selectedCat) {
+        setName(selectedCat.name);
+        setImage(selectedCat.image);
+      }
+    }
+  }, [modalVisible]);
+
+  const onSubmit = () => {
+    console.log("on submit");
+    dispatch(addCategory({ name: name, image: image }));
+    closeModal();
+  };
+
+  const onEdit = () => {
+    console.log("ONEDIT");
+    dispatch(editCategory({ name: name, image: image, id: selectedCat.id }));
+    closeModal();
+  };
+
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -22,8 +51,6 @@ const CatModal = ({ modalVisible, closeModal }) => {
       quality: 1,
     });
 
-    console.log(result);
-
     if (!result.cancelled) {
       setImage(result.uri);
     }
@@ -32,11 +59,12 @@ const CatModal = ({ modalVisible, closeModal }) => {
   return (
     <Modal
       isOpen={modalVisible}
-      onClose={closeModal}
+      onClose={() => {
+        closeModal();
+      }}
       avoidKeyboard
-      justifyContent="flex-start"
+      justifyContent="center"
       size="lg"
-      top={20}
       safeAreaTop
     >
       <Modal.Content>
@@ -45,7 +73,7 @@ const CatModal = ({ modalVisible, closeModal }) => {
         <Modal.Body>
           <FormControl isRequired>
             <FormControl.Label>Category Name</FormControl.Label>
-            <Input />
+            <Input value={name} onChangeText={setName} />
           </FormControl>
           <FormControl.Label isRequired mt={5}>
             Category Image Upload
@@ -71,8 +99,8 @@ const CatModal = ({ modalVisible, closeModal }) => {
           </Center>
         </Modal.Body>
         <Modal.Footer>
-          <Button flex="1" onPress={closeModal}>
-            Proceed
+          <Button flex="1" onPress={selectedCat ? onEdit : onSubmit}>
+            {selectedCat ? "Edit" : "Submit"}
           </Button>
         </Modal.Footer>
       </Modal.Content>

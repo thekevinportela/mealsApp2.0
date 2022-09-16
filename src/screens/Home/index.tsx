@@ -10,12 +10,6 @@ import CatModal from "./CatModal";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCategories } from "../../store/redux/meals";
 
-const renderCategoryItem = ({ item }) => {
-  return (
-    <CategoryGridTile title={item.title} image={item.image} id={item.id} />
-  );
-};
-
 export type IHomeProps = {};
 
 const Home: React.FC<IHomeProps> = ({ navigation }) => {
@@ -23,6 +17,7 @@ const Home: React.FC<IHomeProps> = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.meals.categories);
+  const [selectedCat, setSelectedCat] = useState(null);
   console.log("CATEGORIES", categories);
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -45,6 +40,20 @@ const Home: React.FC<IHomeProps> = ({ navigation }) => {
     dispatch(fetchCategories());
   }, []);
 
+  const renderCategoryItem = ({ item }) => {
+    return (
+      <CategoryGridTile
+        name={item.name}
+        image={item.image}
+        id={item.id}
+        onEditPress={() => {
+          setSelectedCat(item);
+          setModalVisible(true);
+        }}
+      />
+    );
+  };
+
   const safeArea = useSafeAreaInsets();
 
   const openModal = () => setModalVisible(true);
@@ -60,7 +69,11 @@ const Home: React.FC<IHomeProps> = ({ navigation }) => {
           contentContainerStyle={{ paddingBottom: safeArea.bottom }}
         />
       </Center>
-      <CatModal modalVisible={modalVisible} closeModal={closeModal} />
+      <CatModal
+        modalVisible={modalVisible}
+        closeModal={closeModal}
+        selectedCat={selectedCat}
+      />
     </>
   );
 };

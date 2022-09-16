@@ -2,7 +2,7 @@ import { View, Text } from "react-native";
 import React from "react";
 import { Center, FlatList } from "native-base";
 import { MealGridTile } from "./MealGridTile";
-import { MEALS } from "../data/dummy-data";
+// import { MEALS } from "../data/dummy-data";
 
 const MealsList = ({ items }) => {
   const renderMealItem = (itemData) => <MealGridTile item={itemData.item} />;

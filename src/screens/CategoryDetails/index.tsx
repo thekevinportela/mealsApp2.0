@@ -1,6 +1,6 @@
 import React from "react";
 import MealsList from "../../components/MealsList";
-import { MEALS } from "../../data/dummy-data";
+// import { MEALS } from "../../data/dummy-data";
 
 const CategoryDetails = ({ route }) => {
   const { id } = route.params;

@@ -10,7 +10,7 @@ import Favorites from "../screens/Favorites";
 import { Button, Icon } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 import CreateMeal from "../screens/CreateMeal";
-import ConfirmMeal from "../ConfirmMeal";
+import ConfirmMeal from "../screens/ConfirmMeal";
 import { Settings } from "../screens/Settings";
 
 const Stack = createNativeStackNavigator();
@@ -23,7 +23,7 @@ const Main = () => {
       screenOptions={{
         headerBackTitleVisible: false,
         headerTintColor: "#ddd",
-        contentStyle: { backgroundColor: "#434343" },
+        // contentStyle: { backgroundColor: "#434343" },
         headerStyle: { backgroundColor: "#2c2c2c" },
       }}
     >
@@ -76,8 +76,8 @@ const HomeDrawer = () => {
         headerBackTitleVisible: false,
         headerTintColor: "#ddd",
         // contentStyle: { backgroundColor: "#434343" },
-        headerStyle: { backgroundColor: "#2c2c2c" },
-        sceneContainerStyle: { backgroundColor: "#434343" },
+        headerStyle: { backgroundColor: "#3a3b3c" },
+        sceneContainerStyle: { backgroundColor: "#eee" },
       }}
     >
       <Drawer.Screen name="Home" component={Home} />

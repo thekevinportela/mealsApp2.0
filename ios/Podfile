@@ -5,7 +5,7 @@ require File.join(File.dirname(`node --print "require.resolve('@react-native-com
 require 'json'
 podfile_properties = JSON.parse(File.read(File.join(__dir__, 'Podfile.properties.json'))) rescue {}
 
-platform :ios, podfile_properties['ios.deploymentTarget'] || '12.0'
+platform :ios, podfile_properties['ios.deploymentTarget'] || '12.4'
 install! 'cocoapods',
   :deterministic_uuids => false
 
@@ -13,17 +13,19 @@ target 'mealsappbasic' do
   use_expo_modules!
   config = use_native_modules!
 
-  use_frameworks! :linkage => podfile_properties['ios.useFrameworks'].to_sym if podfile_properties['ios.useFrameworks']
+  # use_frameworks! :linkage => podfile_properties['ios.useFrameworks'].to_sym if podfile_properties['ios.useFrameworks']
+  use_frameworks! :linkage => :static
 
   # Flags change depending on the env values.
   flags = get_default_flags()
 
-  pod 'Firebase', :modular_headers => true
-  pod 'FirebaseCore', :modular_headers => true
-  pod 'GoogleUtilities', :modular_headers => true
+# @generated begin withReactNativeFirebase - expo prebuild (DO NOT MODIFY) sync-a61af217a15f61bd72b8c969542445800edfe21c
+  # pod 'Firebase', :modular_headers => true
+  # pod 'FirebaseCore', :modular_headers => true
+  # pod 'GoogleUtilities', :modular_headers => true
   $RNFirebaseAsStaticFramework = true
+# @generated end withReactNativeFirebase
 
-  
   use_react_native!(
     :path => config[:reactNativePath],
     :hermes_enabled => flags[:hermes_enabled] || podfile_properties['expo.jsEngine'] == 'hermes',
@@ -31,7 +33,6 @@ target 'mealsappbasic' do
     # An absolute path to your application root.
     :app_path => "#{Dir.pwd}/.."
   )
-
 
   # Uncomment to opt-in to using Flipper
   # Note that if you have use_frameworks! enabled, Flipper will not work

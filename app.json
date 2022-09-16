@@ -1,7 +1,8 @@
 {
   "expo": {
     "plugins": [
-      "@react-native-firebase/app"
+      "@react-native-firebase/app",
+      ["./firebase-fix.plugin", "custom"]
     ],
     "name": "meals-app-basic",
     "slug": "meals-app-basic",
@@ -17,9 +18,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "googleServicesFile": "./GoogleService-Info.plist",
